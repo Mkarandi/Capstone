@@ -8,11 +8,6 @@ load_dotenv()
 from pinata import pin_file_to_ipfs, pin_json_to_ipfs, convert_data_to_json
 # Define and connect a new Web3 provider
 w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
-################################################################################
-# Contract Helper function:
-# 1. Loads the contract once using cache
-# 2. Connects to the contract using the contract address and ABI
-################################################################################
 
 # Cache the contract on load
 @st.cache(allow_output_mutation=True)
@@ -35,14 +30,63 @@ def load_contract():
 
 contract = load_contract()
 
+################################################################################
+# Helper functions to pin files and json to Pinata
+################################################################################
+
+
+def pin_artwork(token_name, token_file):
+    # Pin the file to IPFS with Pinata
+    ipfs_file_hash = pin_file_to_ipfs(token_file.getvalue())
+
+    # Build a token metadata file for the artwork
+    token_json = {
+        "name": token_name,
+        "image": ipfs_file_hash
+    }
+    json_data = convert_data_to_json(token_json)
+
+    # Pin the json to IPFS with Pinata
+    json_ipfs_hash = pin_json_to_ipfs(json_data)
+
+    return json_ipfs_hash, token_json
+
+
+def pin_appraisal_report(report_content):
+    json_report = convert_data_to_json(report_content)
+    report_ipfs_hash = pin_json_to_ipfs(json_report)
+    return report_ipfs_hash
+
 
 ################################################################################
 # Create NFT
 ################################################################################
 
-accounts = w3.eth.accounts
-account = accounts[0]
-nft_details = st.text_input("Non-Fungible Token Details", value="Token Completion")
+st.markdown("## Create New NFT")
+artwork_name = st.text_input("Enter the name of the NFT")
+artist_name = st.text_input("Enter the artist name")
+
+# Use the Streamlit `file_uploader` function create the list of digital image file types(jpg, jpeg, or png) that will be uploaded to Pinata.
+file = st.file_uploader("Upload Artwork", type=["jpg", "jpeg", "png"])
+
 if st.button("Create NFT"):
-    contract.functions.CreateNFT(account, nft_details).transact({'from': account, 'gas': 1000000})
+    # Use the `pin_artwork` helper function to pin the file to IPFS
+    nft_ipfs_hash, token_json = pin_artwork(artwork_name, file)
+
+    nft_uri = f"ipfs://{nft_ipfs_hash}"
+
+    tx_hash = contract.functions.createNFT(
+        artwork_name,
+        artist_name,
+        nft_uri,
+        token_json['image']
+    ).transact({'from': address, 'gas': 1000000})
+    receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+    st.write("Transaction receipt mined:")
+    st.write(dict(receipt))
+    st.write("You can view the pinned metadata file with the following IPFS Gateway Link")
+    st.markdown(f"[Artwork IPFS Gateway Link](https://ipfs.io/ipfs/{nft_ipfs_hash})")
+    st.markdown(f"[Artwork IPFS Image Link](https://ipfs.io/ipfs/{token_json['image']})")
+
+st.markdown("---")
 
