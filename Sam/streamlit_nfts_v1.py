@@ -1,5 +1,8 @@
 import streamlit as st
-#from openai_generation.ipynb import nft_image_link
+
+# From openai_generation.ipynb import nft_image_link
+from openai_generation import nft_image_link
+
 
 # Add a title and set its style
 st.title("S.A.D. NFTs")
@@ -70,7 +73,7 @@ num_images = st.slider("How many images?", 1, 5)
 ok = st.button("GO!")
 
 if ok:
-    st.image("img-soGYJAiYW0pyRRR4gVwDT76q.png", width=400)
+    st.image(nft_image_link, width=400)
 
 # Display a placeholder message
 st.text("Displaying items in the {} category".format(category))
