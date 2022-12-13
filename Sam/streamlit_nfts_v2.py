@@ -123,7 +123,7 @@ st.markdown(
 
 # if ok:
 
-#     openai.api_key = "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"
+#     openai.api_key = ""
 
 #     nft_image = openai.Image.create(
 #         prompt=text,
