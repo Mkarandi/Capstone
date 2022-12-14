@@ -12,22 +12,27 @@ w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
 # Cache the contract on load
 @st.cache(allow_output_mutation=True)
 # Define the load_contract function
+
+# Define the load_contract function
 def load_contract():
 
-    # Load NFT ABI
-    with open(Path('./contracts/compiled/nfToken_abi.json')) as f:
-        nfToken_abi = json.load(f)
+    # Load the contract ABI
+    with open(Path('./contracts/compiled/artregistry_abi.json')) as f:
+        contract_abi = json.load(f)
 
     # Set the contract address (this is the address of the deployed contract)
-    contract_address = os.getenv("SMART_CONTRACT_ADDRESS")
+    contract_address = os.getenv("SMART_CONTRACT_ADDRESS_2")
 
     # Get the contract
     contract = w3.eth.contract(
         address=contract_address,
-        abi=nfToken_abi
+        abi=contract_abi
     )
+
     return contract
 
+
+# Load the contract
 contract = load_contract()
 
 accounts = w3.eth.accounts
@@ -61,28 +66,31 @@ def pin_appraisal_report(report_content):
     return report_ipfs_hash
 
 ################################################################################
-# Create New Non-Fungible Token
+# Use Pinata to bridge the gap to uploading files to IPFS
 ################################################################################
-st.markdown("## Create New Non-Fungible Token")
-artwork_name = st.text_input("Enter the name of the token")
-artist_name = st.text_input("Enter the artist name")
+st.markdown("## Decentralize your Art")
+artwork_name = st.text_input("Name the Art")
+artist_name = st.text_input("Name the Artist")
 
 # Use the Streamlit `file_uploader` function create the list of digital image file types(jpg, jpeg, or png) that will be uploaded to Pinata.
 file = st.file_uploader("Upload Artwork", type=["jpg", "jpeg", "png"])
 
-if st.button("Save Photo To IPFS"):
+token_account = st.selectbox("Select the address you would like to save the Non-Fungible Token to:", options=accounts)
+token_details = st.text_input("Artwork Details", value="Genesis Event for Non-Fungible Token")
+
+if st.button("Decentralize Artwork"):
     # Use the `pin_artwork` helper function to pin the file to IPFS
     artwork_ipfs_hash, token_json = pin_artwork(artwork_name, file)
 
     artwork_uri = f"ipfs://{artwork_ipfs_hash}"
 
     tx_hash = contract.functions.registerArtwork(
-        account,
+        token_account,
         artwork_name,
         artist_name,
         artwork_uri,
         token_json['image']
-    ).transact({'from': address, 'gas': 1000000})
+    ).transact({'from': account, 'gas': 1000000})
     receipt = w3.eth.waitForTransactionReceipt(tx_hash)
     st.write("Transaction receipt mined:")
     st.write(dict(receipt))
@@ -93,21 +101,13 @@ if st.button("Save Photo To IPFS"):
 st.markdown("---")
 
 ################################################################################
-# Create NFT
+# Display NFT
 ################################################################################
-token_account = st.selectbox("Select address in which the user wants to save the Non-Fungible Token", options=accounts)
-token_details = st.text_input("Non-Fungible Token Details", value="Non-Fungible Token Event")
-if st.button("Create Non-Fungible Token"):
-    contract.functions.createNFT(token_account, token_details).transact({'from': account, 'gas': 1000000})
-################################################################################
-# Display Certificate
-################################################################################
-token_id = st.number_input("Enter the Token ID to display", value=0, step=1)
-if st.button("Display Non-Fungible Token"):
-    # Get the certificate owner
-    token_owner = contract.functions.ownerOf(token_id).call()
-    st.write(f"The Non-Fungible Token was distributed to {token_owner}")
 
-    # Get the certificate's metadata
-    token_uri = contract.functions.tokenURI(token_id).call()
-    st.write(f"The certificate's tokenURI metadata is {token_uri}")
+st.markdown(f"### Display Token Identification Details")
+token_id = st.number_input("Enter the Token ID to display", value=0, step=1)
+token_uri = st.text_input("Paste Artwork IPFS Image Link")
+
+if st.button("Display Token Details"):
+    st.write(f"The Non-Fungible Token was distributed to {token_account}")
+    st.write(f"The Non-Fungible Token's tokenURI is {token_uri}")
