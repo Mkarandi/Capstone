@@ -116,7 +116,7 @@ def page3():
     # st.sidebar.write(art)
     cost = art_database[Art][1]
     st.sidebar.write("The Artwork" ,"'",art ,"'","costs ", cost, "ether")
-    st_player("Kila_la_heri_images/Kila_la_Heri.mp4")
+    st_player("https://youtu.be/rM-Ey_Be07U")
     
     
     get_art()
