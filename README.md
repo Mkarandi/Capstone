@@ -1,6 +1,6 @@
 # S.A.D NFTs
 
-![image](Arandi/Kila_la_heri_images/nft2.jpg, width=500&height=200)
+![image](Kila_la_heri_images/grad.jpg)
 
 Capstone - December 2022
 
