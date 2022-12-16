@@ -11,7 +11,7 @@ Capstone - December 2022
 
 ## Motivation
 
-- The motivation was to create an Ethereum based decentralized application that will allow users to originate and store artwork as the NFTs. Along the way, we also created a gallery to display and sell the NFTs. We used Solidity via Remix to create the contracts and Streamlit for the dApp. All artwork is registered to Pinata
+We were motivated to create an Ethereum based decentralized application that will allow users to originate and store artwork as the NFTs. Along the way, we also created a gallery to display and sell the NFTs. We used Solidity via Remix to create the contracts and Streamlit for the dApp. All artwork is registered to Pinata
 
 
 
