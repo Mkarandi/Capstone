@@ -18,38 +18,44 @@ Users are able to create their own digital, tokenize it and own it as an NFT. Th
 
 ## Technology requirements
 1. Git clone repository to your local files:
-      git clone 
+
+`git clone https://github.com/Mkarandi/S.A.D-NFTs`
 
 2. Open a .ipynb file and pip install the following packages:
       
-      !pip install streamlit
-      !pip install streamlit_player
-      !pip install openai
-      !pip install web3
-      !pip install json
-      !pip install imageio
+`!pip install streamlit`
+
+`!pip install streamlit_player`
+
+`!pip install openai`
+
+`!pip install web3`
+
+`!pip install json`
+
+`!pip install imageio`
       
 3. Open the app.py file
 
 4. Find the following code block on line 119 and 338:
       
-      openai.api_key = ""
+`openai.api_key = ""`
 
 5. Update the string to match your OpenAI API key.
 
 6. Create a .env file to hold API keys, such as:
-      PINATA_API_KEY=
+      `PINATA_API_KEY=
       OPENAI_API_KEY=
       PINATA_SECRET_API_KEY=
       WEB3_PROVIDER_URI=
       SMART_CONTRACT_ADDRESS=
-      MNEMONIC=
+      MNEMONIC=`
  
 7. Deploy the contract in Remix IDE using solidity, MetaMask, and Ganache 
  
 8. Open terminal and direct yourself to where the file was cloned to and run this to open application:
       
-      streamlit run app.py
+      `streamlit run app.py`
 
 ## Techniques
 There were 3 main components to successfully creating the dApp:
