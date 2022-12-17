@@ -8,7 +8,8 @@ Capstone - December 2022
 - Maurine Arandi
 - Sam Johnson
 
-![output1](https://user-images.githubusercontent.com/104539357/208269356-c8ddbe24-3537-4eae-b949-8ca1af4fd613.png), ![output2](https://user-images.githubusercontent.com/104539357/208269366-ba41d19d-87a5-4dee-8edd-a48fe393a447.png), ![eid_al-fitr](https://user-images.githubusercontent.com/104539357/208269416-8e82cb65-c3ce-43a5-ad3d-02df8a462330.jpeg)
+![output1](https://user-images.githubusercontent.com/104539357/208269356-c8ddbe24-3537-4eae-b949-8ca1af4fd613.png), ![output2](https://user-images.githubusercontent.com/104539357/208269366-ba41d19d-87a5-4dee-8edd-a48fe393a447.png), ![eid_al-fitr](https://user-images.githubusercontent.com/104539357/208269439-727c1b36-7afd-4958-97bd-2fdae8ff0a19.jpeg)
+
 
 ## Overview and summary
 
