@@ -4,7 +4,7 @@
 Capstone - December 2022
 
 
-- Dylan Olsen - 
+- Dylan Olsen
 - Maurine Arandi
 - Sam Johnson
 
@@ -17,6 +17,7 @@ In our attempt to stay true to our mission, we have created a new tool that  our
 Users are able to create their own digital, tokenize it and own it as an NFT. There is also an option to buy/sell already existing art through our gallery. 
 
 ## Technology requirements
+
 1. Git clone repository to your local files:
 
 `git clone https://github.com/Mkarandi/S.A.D-NFTs`
@@ -58,10 +59,15 @@ Users are able to create their own digital, tokenize it and own it as an NFT. Th
       `streamlit run app.py`
 
 ## Techniques
+
 There were 3 main components to successfully creating the dApp:
+
 1. Create and deploy the contract in Remix IDE using solidity, MetaMask, and Ganache
+
 2. Integrate OpenAi’s API key to generate artificially intelligent produced artwork
+ 
 3. Register the artwork to IPFS through Pinata
+ 
 4. Use a Helper file of Web3 transaction functions to implement selling gallery artwork
 
 
