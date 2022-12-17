@@ -1,11 +1,10 @@
 # S.A.D NFTs
 
-![image](Kila_la_heri_images/grad.jpg)
 
 Capstone - December 2022
 
 
-- Dylan Olsen
+- Dylan Olsen - 
 - Maurine Arandi
 - Sam Johnson
 
