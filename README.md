@@ -8,6 +8,10 @@ Capstone - December 2022
 - Maurine Arandi
 - Sam Johnson
 
+![output1](https://user-images.githubusercontent.com/104539357/208269105-a2a2e349-e0cd-4511-bf77-638d35db40e1.png)
+
+![output2](https://user-images.githubusercontent.com/104539357/208269108-d675a327-bba7-417e-b0e7-ebc88720e19f.png)
+
 ## Overview and summary
 
 We were motivated to create an Ethereum based decentralized application that will allow users to originate and store artwork as the NFTs. Along the way, we also created a gallery to display and sell the NFTs. We used Solidity via Remix to create the contracts and Streamlit for the dApp. All artwork is registered to IPFS via Pinata.
