@@ -63,7 +63,7 @@ Users are able to create their own digital, tokenize it and own it as an NFT. Th
 
 ## Techniques
 
-There were 3 main components to successfully creating the dApp:
+There were 4 main components to successfully creating the dApp:
 
 1. Create and deploy the contract in Remix IDE using solidity, MetaMask, and Ganache
 
@@ -72,6 +72,12 @@ There were 3 main components to successfully creating the dApp:
 3. Register the artwork to IPFS through Pinata
  
 4. Use a Helper file of Web3 transaction functions to implement selling gallery artwork
+
+## DEMO
+
+[![DEMO](https://img.youtube.com/vi/qk8CjHicGDI/hqdefault.jpg)](https://youtu.be/qk8CjHicGDI)
+
+
 
 
 
