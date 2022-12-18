@@ -73,7 +73,7 @@ There were 4 main components to successfully creating the dApp:
  
 4. Use a Helper file of Web3 transaction functions to implement selling gallery artwork
 
-## DEMO
+## Video Demo
 
 [![DEMO](https://img.youtube.com/vi/qk8CjHicGDI/hqdefault.jpg)](https://youtu.be/qk8CjHicGDI)
 
